@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import java.awt.geom.Line2D;
 import java.awt.geom.Line2D.Double;
 import java.awt.geom.Point2D;
+import java.util.Scanner;
 
 
 public class TreeComponent extends JPanel
@@ -18,9 +19,11 @@ public class TreeComponent extends JPanel
 
    private int current; //current order
    
-   private double scalingFactor = .618;
+   private double scalingFactor = .618; //how much smaller each consecutive branch will be
    
-   private Point2D.Double startPoint;
+   private Point2D.Double startPoint; //starting position of branch
+   
+   private double branchAngle;
 
    //-----------------------------------------------------------------
    //  Sets the initial fractal order to the value specified.
@@ -31,6 +34,23 @@ public class TreeComponent extends JPanel
       startPoint = new Point2D.Double(400, 600);
       setBackground (Color.black);
       setPreferredSize (new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+      Scanner s = new Scanner(System.in);
+      System.out.println("Would you like to choose a branching angle or use a random value? (choose/random) ");
+      if (s.next().equals("choose"))
+      {
+          System.out.println("Please enter a value from 0-90");
+          branchAngle = s.nextDouble();
+      }
+      else if (s.next().equals("random"))
+      {
+          branchAngle = Math.random() * 90 + 1;
+          System.out.println("The random angle is " + branchAngle);
+      }
+      else
+      {
+          System.out.println("Default angle set to 42");
+          branchAngle = 42;
+      }
    }
 
    //-----------------------------------------------------------------
@@ -42,10 +62,11 @@ public class TreeComponent extends JPanel
    public void drawFractal (Graphics2D g2, Point2D.Double oldPoint, double length, double angle, int order)
    {
        Point2D.Double newPoint;
-       double branchAngle = 12;
-       if (order == 12)
+       //double branchAngle = 7; //specify branching angle
+       //double branchAngle = Math.random() * 90 + 1; //set random angle
+       if (order >= 13)
        {
-           return;
+           return; //end the recursive loop
        }
        else
        {
@@ -68,7 +89,7 @@ public class TreeComponent extends JPanel
       Graphics2D g2 = (Graphics2D)page;
       super.paintComponent (g2);
       page.setColor(Color.green);
-      drawFractal(g2, startPoint, 120, 0, 0);
+      drawFractal(g2, startPoint, 180, 0, 0);
    }
 
    //-----------------------------------------------------------------
