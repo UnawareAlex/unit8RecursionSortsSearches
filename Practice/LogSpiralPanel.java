@@ -31,8 +31,8 @@ public class LogSpiralPanel extends JPanel
    */
    private void recursiveDraw(Graphics2D g2, double x, double y, double side, int angle)
    {
-      . . .
+     /// . . .
    }
    
-   . . .
+   //. . .
 }

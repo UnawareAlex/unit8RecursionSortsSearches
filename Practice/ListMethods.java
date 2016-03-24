@@ -51,13 +51,13 @@ public class ListMethods
         return list;
     }
     
-    public static ArraList<Integer> merge(ArrayList<Integer> tList1, ArrayList<Integer> tList2)
+    public static ArrayList<Integer> merge(ArrayList<Integer> tList1, ArrayList<Integer> tList2)
     {
-        ArraList<Integer> list1 = ListMethods.deepClone(tList1);
-        ArraList<Integer> list2 = ListMethods.deepClone(tList2);
+        ArrayList<Integer> list1 = ListMethods.deepClone(tList1);
+        ArrayList<Integer> list2 = ListMethods.deepClone(tList2);
         ArrayList<Integer> tempList;  // The list we will return
         
-        if (list1.size()
+        //if (list1.size()
     }
    
     public static ArrayList<Integer> deepClone(ArrayList<Integer> tList)
