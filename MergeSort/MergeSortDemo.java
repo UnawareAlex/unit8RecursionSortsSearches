@@ -10,10 +10,13 @@ public class MergeSortDemo
    {  
       int[] a = ArrayUtil.randomIntArray(20, 100);
       System.out.println(Arrays.toString(a));
-
       MergeSorter.sort(a);
-
       System.out.println(Arrays.toString(a));
+      
+      String[] s = ArrayUtil.randomStringArray(5, 5);
+      System.out.println(Arrays.toString(s));
+      MergeSorter.sort(s);
+      System.out.println(Arrays.toString(s));
    }
 }
 
